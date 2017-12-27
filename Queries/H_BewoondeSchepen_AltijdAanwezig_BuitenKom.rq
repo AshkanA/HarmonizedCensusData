@@ -1,4 +1,4 @@
-#+ summary: Bewoonde Schepen AltijdAanwezig buiten de Kom
+#+ summary: Bewoonde Schepen AltijdAanwezig binnen de Kom
 #+ tags: 
 #+   - Harmonized Tables 1859-1920
  
@@ -14,10 +14,10 @@ WHERE { ?obs a qb:Observation .
         ?obs sdmx-dimension:refArea ?municipality .
         ?obs cedar:houseType <http://lod.cedar-project.nl/vocab/cedar#house-BewoondeSchepen> .
         ?obs cedar:Kom <http://lod.cedar-project.nl/vocab/cedar-Kom#BuitenKom> .
-        FILTER NOT EXISTS { ?obs cedar:residenceStatus <http://lod.cedar-project.nl/vocab/cedar-residenceStatus#TijdelijkAanwezig> . }
+        FILTER NOT EXISTS { ?obs cedar:residenceStatus <http://lod.cedar-project.nl/vocab/cedar-residenceStatus#AltijdAanwezig> . }
         ?slice a qb:Slice.
         ?slice qb:observation ?obs.
         ?slice sdmx-dimension:refPeriod ?year .
         FILTER (NOT EXISTS {?obs cedar:isTotal ?total }) .
-        FILTER (?year IN (1859, 1869, 1879, 1889, 1899, 1909, 1920)) .
+        FILTER (?year IN (1830, 1840, 1849, 1859, 1869, 1879, 1889, 1899, 1909, 1920, 1930, 1940, 1950, 1960, 1971, 1980, 1990, 2000, 2010)) .
 } GROUP BY ?municipality ?year ORDER BY ?municipality
